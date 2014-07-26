@@ -7,7 +7,7 @@ LowLatencyAudio is a native plugin for PhoneGap.  This implementation is designe
 
 The LowLatencyAudio plugin can be added to your project via the PhoneGap command line tools.  Simply use the following command to add this to your project:
 
-`cordova plugin add https://github.com/swentel/LowLatencyAudio`
+`cordova plugin add https://github.com/CloudKidStudio/LowLatencyAudio`
 
 You will also need to include the AudioToolbox library in your XCode project. Instructions for linking frameworks can be found [here](https://developer.apple.com/library/ios/recipes/xcode_help-project_editor/Articles/AddingaLibrarytoaTarget.html#//apple_ref/doc/uid/TP40010155-CH17-SW1).
 
