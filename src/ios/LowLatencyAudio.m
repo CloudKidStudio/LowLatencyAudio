@@ -177,6 +177,39 @@ NSString* RESTRICTED = @"ACTION RESTRICTED FOR FX AUDIO";
     }];
 }
 
+- (void) unpause:(CDVInvokedUrlCommand*)command;
+{
+        [self.commandDelegate runInBackground:^{
+        CDVPluginResult* pluginResult;
+        NSString* callbackID = command.callbackId;
+        NSString *audioID = [command.arguments objectAtIndex:0];
+
+        if ( audioMapping )
+        {
+            NSObject* asset = [audioMapping objectForKey: audioID];
+            if ([asset isKindOfClass:[LowLatencyAudioAsset class]])
+            {
+                LowLatencyAudioAsset *_asset = (LowLatencyAudioAsset*) asset;
+                [_asset unpause];
+
+                pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString: PAUSE_REQUESTED];
+                [self.commandDelegate sendPluginResult:pluginResult callbackId:callbackID];
+            }
+            else if ( [asset isKindOfClass:[NSNumber class]] )
+            {
+                pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString: RESTRICTED];
+                [self.commandDelegate sendPluginResult:pluginResult callbackId:callbackID];
+            }
+
+        }
+        else
+        {
+            pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString: ERROR_MISSING_REFERENCE];
+            [self.commandDelegate sendPluginResult:pluginResult callbackId:callbackID];
+        }
+    }];
+}
+
 - (void) pause:(CDVInvokedUrlCommand*)command;
 {
         [self.commandDelegate runInBackground:^{

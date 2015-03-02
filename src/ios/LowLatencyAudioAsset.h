@@ -28,6 +28,7 @@
 
 - (id) initWithPath:(NSString*) path withVoices:(NSNumber*) numVoices;
 - (void) play;
+- (void) unpause;
 - (void) pause;
 - (void) stop;
 - (void) loop;

@@ -31,6 +31,7 @@
 - (void) preloadAudio:(CDVInvokedUrlCommand*)command;
 - (void) play:(CDVInvokedUrlCommand*)command;
 - (void) pause:(CDVInvokedUrlCommand*)command;
+- (void) unpause:(CDVInvokedUrlCommand*)command;
 - (void) stop:(CDVInvokedUrlCommand*)command;
 - (void) loop:(CDVInvokedUrlCommand*)command;
 - (void) unload:(CDVInvokedUrlCommand*)command;
